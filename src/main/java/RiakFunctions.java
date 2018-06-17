@@ -27,15 +27,15 @@ public class RiakFunctions {
     public static String deleteEntryForKey(RiakClient client, Location key) {
         DeleteValue dv = new DeleteValue.Builder(key).build();
         RiakFuture response = client.executeAsync(dv);
-        return response.toString();
+        return response.getQueryInfo().toString();
     }
 
     public static String addNewEntryWithKey(RiakClient client, Location key, Object itemToStore) throws ExecutionException, InterruptedException {
         StoreValue.Response svResponse;
-        if(key!= null) {
+        if(key != null) {
             StoreValue sv = new StoreValue.Builder(itemToStore).withLocation(key).build();
             svResponse = client.execute(sv);
-            return svResponse.toString();
+            return new StringBuffer().append("Resource key: ").append(svResponse.getGeneratedKey().toString()).toString();
         }
         return null;
     }
@@ -43,7 +43,7 @@ public class RiakFunctions {
     public static String modifyEntryByKey(RiakClient client, Location key, PersonUpdate update) throws ExecutionException, InterruptedException {
         UpdateValue updateValue = new UpdateValue.Builder(key).withUpdate(update).build();
         UpdateValue.Response response = client.execute(updateValue);
-        return response.toString();
+        return new StringBuffer().append("Was resource updated? ").append(response.wasUpdated()).append(" ").toString();
     }
 
     public static Location generateLocationForKey(String key) {
@@ -51,6 +51,6 @@ public class RiakFunctions {
     }
 
     public static void performPreRunCleanup(RiakClient client) {
-        deleteEntryForKey(client, generateLocationForKey("testPerson"));
+        System.out.println(deleteEntryForKey(client, generateLocationForKey("testPerson")));
     }
 }

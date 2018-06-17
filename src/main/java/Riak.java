@@ -16,8 +16,9 @@ public class Riak {
 
         System.out.println("GENERATING CLIENT...");
 
-        RiakClient riakClient = RiakClient.newClient(8098, "localhost");
+        //using protocol buffer interface for interaction with riak.
 
+        RiakClient riakClient = RiakClient.newClient(8087, "127.0.0.1");
         System.out.println("CLIENT GENERATED SUCCESSFULLY!");
         RiakFunctions.performPreRunCleanup(riakClient);
         Location testResourceKey = RiakFunctions.generateLocationForKey("Test");
@@ -41,6 +42,6 @@ public class Riak {
         System.out.println("DELETING NEW RESOURCE: ");
         System.out.println(RiakFunctions.deleteEntryForKey(riakClient, testResourceKey));
 
-
+        riakClient.shutdown();
     }
 }

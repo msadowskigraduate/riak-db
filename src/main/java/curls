@@ -1,0 +1,310 @@
+#1
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "1",
+        "firstName": "Tom",
+        "lastName": "Cruise",
+        "born": 1978,
+        "salary":850.50
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Cruise?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYvO9LGwKAumMGUyJjHylCxc+YVviwA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:40:24 GMT
+ETag: "3UlJbdTar6vcl6vqqV6u5c"
+Date: Sat, 16 Jun 2018 16:40:24 GMT
+Content-Type: application/json
+Content-Length: 139
+
+      {
+        "id": "1",
+        "firstName": "Tom",
+        "lastName": "Cruise",
+        "born": 1978,
+        "salary":850.50
+      }
+
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "2",
+        "firstName": "Maria",
+        "lastName": "Sharapova",
+        "born": 1994,
+        "salary":135.0
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Sharapova?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYvcd/LwKAumMGUyJjHytC9a+YVviwA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:44:59 GMT
+ETag: "5xEdtmPn0Mw1xO6TVRKnre"
+Date: Sat, 16 Jun 2018 16:44:59 GMT
+Content-Type: application/json
+Content-Length: 143
+
+      {
+        "id": "2",
+        "firstName": "Maria",
+        "lastName": "Sharapova",
+        "born": 1994,
+        "salary":135.0
+      }
+
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "3",
+        "firstName": "James",
+        "lastName": "Bond",
+        "born": 1936,
+        "salary":155.0
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Bond?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYvUjnHwKAumMGUyJjHynB998wrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:50:31 GMT
+ETag: "5JTjAST5wRs1ni39C0WSXj"
+Date: Sat, 16 Jun 2018 16:50:31 GMT
+Content-Type: application/json
+Content-Length: 138
+
+      {
+        "id": "3",
+        "firstName": "James",
+        "lastName": "Bond",
+        "born": 1936,
+        "salary":155.0
+      }
+
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "2",
+        "firstName": "Leonidas",
+        "lastName": "Of Sparta",
+        "born": 263,
+        "salary":5.5
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Leonidas?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYvX2XBwKAumMGUyJjHyuC2Z+YVviwA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:52:22 GMT
+ETag: "4vPRrvyNMpRSdZj0BNmuTK"
+Date: Sat, 16 Jun 2018 16:52:22 GMT
+Content-Type: application/json
+Content-Length: 142
+
+      {
+        "id": "2",
+        "firstName": "Leonidas",
+        "lastName": "Of Sparta",
+        "born": 263,
+        "salary":5.5
+      }
+
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263,
+        "salary":0.5
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Geralt?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftbP23OdgUFdMIMpkTGPlaFmz8wrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:53:16 GMT
+ETag: "7ixe6k0qZHfbgUoplD1neM"
+Date: Sat, 16 Jun 2018 16:53:16 GMT
+Content-Type: application/json
+Content-Length: 140
+
+      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263,
+        "salary":0.5
+      }
+
+#2
+curl -i -X GET  http://127.0.0.1:8098/buckets/s17983/keys/Geralt?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftbP23OdgUFdMIMpkTGPlaFmz8wrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:53:16 GMT
+ETag: "7ixe6k0qZHfbgUoplD1neM"
+Date: Sat, 16 Jun 2018 16:54:21 GMT
+Content-Type: application/json
+Content-Length: 140
+
+      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263,
+        "salary":0.5
+      }
+
+#3
+curl -i -X PUT -H "Content-Type: application/json" -d '         {
+        "id": "2",
+        "firstName": "Leonidas",
+        "lastName": "Of Sparta",
+        "born": 263,
+        "salary":5.5,
+	"status": "DEAD"
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Leonidas?returnbody=true
+
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYvX2XBwKAumMGUyJTHytC7f+YVviwA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 17:06:21 GMT
+ETag: "7IAWKwNvOfaz5zykUl1pNM"
+Date: Sat, 16 Jun 2018 17:06:21 GMT
+Content-Type: application/json
+Content-Length: 163
+
+         {
+        "id": "2",
+        "firstName": "Leonidas",
+        "lastName": "Of Sparta",
+        "born": 263,
+        "salary":5.5,
+"status": "DEAD"
+      }
+#4
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Geralt?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftbP23OdgUFdMIMpkS2PleHtvplX+LIA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 17:03:41 GMT
+ETag: "2yMaFbCjeZqzZ1S9k8Twu5"
+Date: Sat, 16 Jun 2018 17:03:41 GMT
+Content-Type: application/json
+Content-Length: 118
+
+      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263
+      }
+
+#5
+curl -i -X PUT -H "Content-Type: application/json" -d '      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263,
+        "salary":1.5
+      }' http://127.0.0.1:8098/buckets/s17983/keys/Geralt?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftbP23OdgUFdMIMpkSmPlSF678wrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 16:56:59 GMT
+ETag: "5tq3mH599CwV5SDupIv6EI"
+Date: Sat, 16 Jun 2018 16:56:59 GMT
+Content-Type: application/json
+Content-Length: 140
+
+      {
+        "id": "2",
+        "firstName": "Geralt",
+        "lastName": "Of Rivia",
+        "born": 1263,
+        "salary":1.5
+      }
+
+#6
+curl -i -X DELETE  http://127.0.0.1:8098/buckets/s17983/keys/Bruce2
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sat, 16 Jun 2018 16:41:45 GMT
+Content-Type: application/json
+Content-Length: 0
+
+#7
+curl -i -X GET  http://127.0.0.1:8098/buckets/s17983/keys/ThisIsBritney?returnbody=true
+
+HTTP/1.1 404 Object Not Found
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sat, 16 Jun 2018 17:07:30 GMT
+Content-Type: text/plain
+Content-Length: 10
+
+not found
+
+#8
+curl -i -X POST -H "Content-Type: application/json" -d '      {
+        "statusText": "Look! No Key Here!"
+      }' http://127.0.0.1:8098/buckets/s17983/keys?returnbody=true
+
+HTTP/1.1 201 Created
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYv2r+OgUFdMIMpkTGPlSHywMwrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Location: /buckets/s17983/keys/FC6HiSbgFmPeHefV0IjypBXgpqQ
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 17:09:45 GMT
+ETag: "CNXyONmkMe8tunZDrm7jz"
+Date: Sat, 16 Jun 2018 17:09:45 GMT
+Content-Type: application/json
+Content-Length: 58
+
+      {
+        "statusText": "Look! No Key Here!"
+      }
+
+#9
+curl -i -X GET  http://127.0.0.1:8098/buckets/s17983/keys/FC6HiSbgFmPeHefV0IjypBXgpqQ?returnbody=true
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8ypz/ftYv2r+OgUFdMIMpkTGPlSHywMwrfFkA
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s17983>; rel="up"
+Last-Modified: Sat, 16 Jun 2018 17:09:45 GMT
+ETag: "CNXyONmkMe8tunZDrm7jz"
+Date: Sat, 16 Jun 2018 17:11:00 GMT
+Content-Type: application/json
+Content-Length: 58
+
+      {
+        "statusText": "Look! No Key Here!"
+      }
+
+#10
+curl -i -X DELETE  http://127.0.0.1:8098/buckets/s17983/keys/FC6HiSbgFmPeHefV0IjypBXgpqQ?returnbody=true
+
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sat, 16 Jun 2018 17:11:55 GMT
+Content-Type: application/json
+Content-Length: 0

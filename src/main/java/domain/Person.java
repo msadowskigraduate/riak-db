@@ -1,11 +1,8 @@
 package domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 /**
  * @author sadowsm3 on 17.06.2018
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
     private String id;
     private String firstName;
