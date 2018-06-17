@@ -1,13 +1,12 @@
-import domain.Person;
-import domain.PersonUpdate;
 import com.basho.riak.client.api.RiakClient;
 import com.basho.riak.client.api.commands.kv.DeleteValue;
 import com.basho.riak.client.api.commands.kv.FetchValue;
 import com.basho.riak.client.api.commands.kv.StoreValue;
 import com.basho.riak.client.api.commands.kv.UpdateValue;
-import com.basho.riak.client.core.RiakFuture;
 import com.basho.riak.client.core.query.Location;
 import com.basho.riak.client.core.query.Namespace;
+import domain.Person;
+import domain.PersonUpdate;
 
 import java.util.concurrent.ExecutionException;
 
@@ -21,18 +20,21 @@ public class RiakFunctions {
     public static Person getValueForKey(RiakClient client, Location location) throws ExecutionException, InterruptedException {
         FetchValue fv = new FetchValue.Builder(location).build();
         FetchValue.Response response = client.execute(fv);
-        return response.getValue(Person.class);
+        Person p = response.getValue(Person.class);
+        if(p != null) {
+            return p;
+        }
+        throw new NoSuchElementException("Element removed/not existing!");
     }
 
-    public static String deleteEntryForKey(RiakClient client, Location key) {
+    public static void deleteEntryForKey(RiakClient client, Location key) throws ExecutionException, InterruptedException {
         DeleteValue dv = new DeleteValue.Builder(key).build();
-        RiakFuture response = client.executeAsync(dv);
-        return response.getQueryInfo().toString();
+        client.execute(dv);
     }
 
     public static String addNewEntryWithKey(RiakClient client, Location key, Object itemToStore) throws ExecutionException, InterruptedException {
         StoreValue.Response svResponse;
-        if(key != null) {
+        if (key != null) {
             StoreValue sv = new StoreValue.Builder(itemToStore).withLocation(key).build();
             svResponse = client.execute(sv);
             return new StringBuffer().append("Resource key: ").append(svResponse.getGeneratedKey().toString()).toString();
@@ -50,7 +52,11 @@ public class RiakFunctions {
         return new Location(new Namespace(BUCKET_NAME), key);
     }
 
-    public static void performPreRunCleanup(RiakClient client) {
-        System.out.println(deleteEntryForKey(client, generateLocationForKey("testPerson")));
+    public static void performPreRunCleanup(RiakClient client) throws ExecutionException, InterruptedException {
+        deleteEntryForKey(client, generateLocationForKey("testPerson"));
+    }
+
+    public static void printEmptyLine() {
+        System.out.println();
     }
 }
